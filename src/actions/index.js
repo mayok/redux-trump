@@ -1,42 +1,23 @@
-export const INCREMENT = 'INCREMENT';
-export const COMPARE = 'COMPARE';
+export const BUTTON_CLICK = 'BUTTON_CLICK';
 export const DEAL = 'DEAL';
-export const DROP = 'DROP';
+export const UPDATE = 'UPDATE';
 
-export const increment = () => ({
-  type: INCREMENT,
-});
-
-export const compare = (whether) => ({
-  type: COMPARE,
-  whether
+export const buttonClick = text => ({
+  type: BUTTON_CLICK,
+  text,
 });
 
 export const deal = () => ({
   type: DEAL,
 });
 
-export const drop = () => ({
-  type: DROP,
+export const update = bool => ({
+  type: UPDATE,
+  bool,
 });
 
-
-export const finish = () => {
-  const result = (getState) => {
+export const checkUpdate = () =>
+  (dispatch, getState) => {
     const state = getState();
-    return state.count;
+    return dispatch(update(state.cards.win));
   };
-  return result;
-};
-
-export const update = (whether) => {
-  if (whether) {
-    return (dispatch) => {
-      dispatch(update());
-      dispatch(deal());
-    };
-  }
-  return (dispatch) => {
-    dispatch(finish());
-  };
-};

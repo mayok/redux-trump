@@ -1,10 +1,9 @@
-import { UPDATE, INCREMENT } from '../actions';
+import { UPDATE } from '../actions';
 
 const count = (state = 0, action) => {
   switch (action.type) {
     case UPDATE:
-    case INCREMENT:
-      return state + 1;
+      return action.bool ? state + 1 : state;
     default:
       return state;
   }

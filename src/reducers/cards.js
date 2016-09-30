@@ -1,4 +1,4 @@
-import { UPDATE, COMPARE, DEAL } from '../actions';
+import { UPDATE, BUTTON_CLICK, DEAL } from '../actions';
 
 const initialState = {
   win: false,
@@ -8,10 +8,10 @@ const initialState = {
   },
   stock: [
     // From top, Hearts, Diamonds, Clubs, Spades
-    { mark: 'Hearts', numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] },
-    { mark: 'Diamonds', numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] },
-    { mark: 'Clubs', numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] },
-    { mark: 'Spades', numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] },
+    { mark: 'h', numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] },
+    { mark: 'd', numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] },
+    { mark: 'c', numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] },
+    { mark: 's', numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] },
   ],
 };
 
@@ -34,12 +34,13 @@ const deal = (state) => {
     };
   }
   return {
+    hand: state.table.hand,
     selected: selectCard(state.stock),
   };
 };
 
 const compare = (state = {}, action) => {
-  if (action.whether === 1) {
+  if (action.text === 'HIGH') {
     return (
       state.hand.number > state.selected.number
     );
@@ -50,8 +51,8 @@ const compare = (state = {}, action) => {
 };
 
 const updateStock = (state = {}) => {
-  const mark = state.selected.mark;
-  const number = state.selected.number;
+  const mark = state.table.selected.mark;
+  const number = state.table.selected.number;
 
   const numbers = state.stock
     .find(s => s.mark === mark).numbers
@@ -66,13 +67,9 @@ const updateStock = (state = {}) => {
   });
 
   if (numbers.length === 0) {
-    return {
-      stock: stock.filter(s => s.mark !== mark),
-    };
+    return stock.filter(s => s.mark !== mark);
   }
-  return {
-    stock,
-  };
+  return stock;
 };
 
 const updateTable = (state = {}) => ({
@@ -87,11 +84,17 @@ const cards = (state = initialState, action) => {
         ...state,
         table: deal(state),
       };
-    case COMPARE:
-      return {
-        ...state,
-        win: compare(state.table, action),
-      };
+    case BUTTON_CLICK:
+      switch (action.text) {
+        case 'HIGH':
+        case 'LOW':
+          return {
+            ...state,
+            win: compare(state.table, action),
+          };
+        default:
+          return state;
+      }
     case UPDATE:
       return {
         ...state,
