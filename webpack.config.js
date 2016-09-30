@@ -24,14 +24,14 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader' )
       },
-      {
-        test: /\.(gif|png)$/i,
-        loader: 'url?limit=10000'
-      },
-      {
-        test: /\.(gif|png)$/i,
-        loader: 'file?hash=sha512&digest=hex&name=[path][name].[ext]'
-      }
+      // {
+      //   test: /\.(gif|png)$/i,
+      //   loader: 'url?limit=10000'
+      // },
+      // {
+      //   test: /\.(gif|png)$/i,
+      //   loader: 'file?hash=sha512&digest=hex&name=[path][name].[ext]'
+      // }
     ]
   },
   plugins: [
