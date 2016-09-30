@@ -1,3 +1,4 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
 
 module.exports = {
@@ -18,9 +19,24 @@ module.exports = {
         test: /\.js[x]?$/,
         exclude: /node_modules/,
         loaders: ['babel-loader', 'eslint-loader']
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader' )
+      },
+      {
+        test: /\.(gif|png)$/i,
+        loader: 'url?limit=10000'
+      },
+      {
+        test: /\.(gif|png)$/i,
+        loader: 'file?hash=sha512&digest=hex&name=[path][name].[ext]'
       }
     ]
   },
+  plugins: [
+    new ExtractTextPlugin("app.css", { allChunks: true })
+  ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
