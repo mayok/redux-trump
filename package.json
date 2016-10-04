@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js test/**/*_spec.js",
     "test:watch": "npm run test -- --watch",
-    "build": "webpack",
+    "build": "webpack -p --config webpack.production.config.js",
     "start": "webpack-dev-server",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src"
