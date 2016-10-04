@@ -1,3 +1,10 @@
 language: node_js
 node_js:
-  - "node"
+- node
+deploy:
+  provider: s3
+  acess_key_id: "AKIAJIPCS2NZG6RNWY5Q"
+  secret_access_key:
+    secure: "ZZuAsGHkLU5thjqgsJFeQL6ZELK5LkrcCU2zsYQY0Y5zvCASZA8Ra91cElHFDmaOe4kn64FX8lJ9KVHKLJX0JsuH7D+8rJxCp5Kbqi72LoWq686VPdvu+6uZHFuwlUqVLxI/1W6UAVW31UKe1PmoxHBJk8z2FcUTPVoEh/T+VDMzC5OS5eFTFaAOYQpfZZ23C4uanoAFnIiecavbUDGszgGz6+nlf5Lt7SlYWgeAD2ylvbOf0xmDFhUyq7mvMp3BUkosKIkCblxUGHKQVq2C4a7iIZZcObmD4F0gXLwTNUNDmnhl4HRYvlRBkWDjBSE5wvr6t+HPIqtNTzyfDMQbrQSE3h5dmDXDZzG7n8RCg7zB4EPhV/4pk3Yhoa4iGw16mYsUPHaRS6FaFp5zTSJeBwHtuj24WULctG7FwisdNKSDxGdV3KrBNkFSX1AFuozYbLw1TQ0XFl+m4XuHPrD/7bvUlXxmv/A1pzr77mOKSyjxbCLWvIXrYrjgBkGl5zClsHvZvdsn8SkD6QzN0iPlgZ/qFfZ5uQGCxJEiA8p8BqrOX3ppnF57av2x9v1LJv2/z+1GcthVdkp011HyqEx+mj45gzEFZWGDCiuXb8k9JcCiAdPKAwewtp1TjCeiIHycnKMeJJ8FZn4F7oBcf3QzY+kl2KDhDl4t5ZKDOHpJRNE="
+  bucket: "redux-trump"
+  local_dir: dist
