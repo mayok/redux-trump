@@ -6,18 +6,16 @@ const Cards = ({ table, toggle }) => {
   const selected = `${table.selected.mark
     + (`0${table.selected.number}`).slice(-2)}`;
 
+  const handSrc = hand === 'undefineded' ? 'imgs/back.png' : `imgs/${hand}.png`;
+
+  const bool = toggle && typeof selected !== 'undefined' && selected;
+  const selectedSrc = bool ? `imgs/${selected}.png` : 'imgs/back.png';
+  const selectedAlt = bool ? `${selected}` : 'back';
+
   return (
     <div>
-      <img src={`imgs/${hand}.png`} alt={hand} className={'card'} />
-      {(() => {
-        if (toggle) {
-          if (typeof selected === 'undefined' || !selected) {
-            return '';
-          }
-          return <img src={`imgs/${selected}.png`} alt={selected} className={'card'} />;
-        }
-        return <img src={'imgs/back.png'} alt={'back'} className={'card'} />;
-      })()}
+      <img src={handSrc} alt={hand} className={'card'} />
+      <img src={selectedSrc} alt={selectedAlt} className={'card'} />
     </div>
   );
 };
