@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-// import md5 from 'js-md5';
 
 const Cards = ({ table, toggle }) => {
   const hand = `${table.hand.mark
