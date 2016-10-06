@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import styles from './styles.css';
 // import md5 from 'js-md5';
 
 const Cards = ({ table, toggle }) => {
@@ -9,15 +10,15 @@ const Cards = ({ table, toggle }) => {
 
   return (
     <div>
-      <img src={`imgs/${hand}.png`} alt={hand} className={'card'} />
+      <img src={`imgs/${hand}.png`} alt={hand} className={styles.card} />
       {(() => {
         if (toggle) {
           if (typeof selected === 'undefined' || !selected) {
             return '';
           }
-          return <img src={`imgs/${selected}.png`} alt={selected} className={'card'} />;
+          return <img src={`imgs/${selected}.png`} alt={selected} className={styles.card} />;
         }
-        return <img src={'imgs/back.png'} alt={'back'} className={'card'} />;
+        return <img src={'imgs/back.png'} alt={'back'} className={styles.card} />;
       })()}
     </div>
   );
