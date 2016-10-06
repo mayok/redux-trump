@@ -9,16 +9,16 @@ const Cards = ({ table, toggle }) => {
     + (`0${table.selected.number}`).slice(-2)}`;
 
   return (
-    <div>
-      <img src={`imgs/${hand}.png`} alt={hand} className={styles.card} />
+    <div className={styles.clearfix}>
+      <img src={`imgs/${hand}.png`} alt={hand} className={styles.left} />
       {(() => {
         if (toggle) {
           if (typeof selected === 'undefined' || !selected) {
             return '';
           }
-          return <img src={`imgs/${selected}.png`} alt={selected} className={styles.card} />;
+          return <img src={`imgs/${selected}.png`} alt={selected} className={styles.right} />;
         }
-        return <img src={'imgs/back.png'} alt={'back'} className={styles.card} />;
+        return <img src={'imgs/back.png'} alt={'back'} className={styles.right} />;
       })()}
     </div>
   );

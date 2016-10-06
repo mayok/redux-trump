@@ -1,9 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { deal } from '../actions';
-import Cards from '../containers/CardsContainer';
-import Buttons from '../components/Buttons';
-import Counter from '../components/Counter';
+import { deal } from '../../actions';
+import Cards from '../../containers/CardsContainer';
+import Buttons from '../../components/Buttons';
+import Counter from '../../components/Counter';
+
+import styles from './styles.css';
+// import card from '../../components/Cards/styles.css';
 
 
 class App extends Component {
@@ -20,7 +23,7 @@ class App extends Component {
     const { cards, count, shouldToggle } = this.props;
 
     return (
-      <div>
+      <div className={styles.center}>
         <Cards table={cards.table} />
         {(() => {
           if (shouldToggle) {

@@ -1,5 +1,20 @@
+.clearfix{}
+.claerfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .card {
   display: inline-block;
   width: 100px;
   height: 150px;
+  padding: 0 0 .8em;
+}
+.left {
+  composes: card;
+  float: left;
+}
+.right {
+  composes: card;
+  float: right;
 }
