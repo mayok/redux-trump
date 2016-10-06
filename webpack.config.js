@@ -22,7 +22,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader' )
+        loaders: [
+          'style',
+          'css?modules&importLoaders=1&localIdentName=[path]_[name]_[local]_[hash:base64:5]'
+        ]
       },
       // {
       //   test: /\.(gif|png)$/i,
