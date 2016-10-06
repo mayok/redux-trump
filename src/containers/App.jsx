@@ -7,9 +7,6 @@ import Counter from '../components/Counter';
 
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
 
   componentDidMount() {
     const { dispatch } = this.props;
@@ -18,16 +15,12 @@ class App extends Component {
 
   render() {
     const { cards, count, shouldToggle } = this.props;
+    const value = shouldToggle ? ['FINISH', 'CONTINUE'] : ['HIGH', 'LOW'];
 
     return (
       <div>
         <Cards table={cards.table} />
-        {(() => {
-          if (shouldToggle) {
-            return <Buttons value={['FINISH', 'CONTINUE']} />;
-          }
-          return <Buttons value={['HIGH', 'LOW']} />;
-        })()}
+        <Buttons value={value} />
         <Counter count={count} />
       </div>
     );
@@ -43,7 +36,6 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   const { cards, count, shouldToggle } = state;
-  // const { table } = state.cards;
 
   return {
     cards,
